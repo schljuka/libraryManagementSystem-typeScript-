@@ -10,6 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const UserServices_1 = require("../services/UserServices");
+const LibraryErrors_1 = require("../utils/LibraryErrors");
 function handleRegister(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
         const user = req.body;
@@ -36,4 +37,30 @@ function handleRegister(req, res) {
         }
     });
 }
-exports.default = { handleRegister };
+function handleLogin(req, res) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const credentials = req.body;
+        try {
+            const loggedIn = yield (0, UserServices_1.login)(credentials);
+            res.status(200).json({
+                message: "User logged in successfully",
+                user: {
+                    _id: loggedIn._id,
+                    type: loggedIn.type,
+                    firstName: loggedIn.firstName,
+                    lastName: loggedIn.lastName,
+                    email: loggedIn.email
+                }
+            });
+        }
+        catch (error) {
+            if (error instanceof LibraryErrors_1.InvalidUsernameOrPassword) {
+                res.status(401).json({ message: "Unable to login user at this time", error: error.message });
+            }
+            else {
+                res.status(500).json({ message: "Unable to login user at this time", error: error.message });
+            }
+        }
+    });
+}
+exports.default = { handleRegister, handleLogin };

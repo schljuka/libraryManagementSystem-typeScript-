@@ -34,6 +34,10 @@ exports.Schemas = {
             lastName: joi_1.default.string().required(),
             email: joi_1.default.string().regex(/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/).required(),
             password: joi_1.default.string().required()
+        }),
+        login: joi_1.default.object({
+            email: joi_1.default.string().regex(/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/).required(),
+            password: joi_1.default.string().required()
         })
     }
 };

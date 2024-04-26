@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import { config } from '../config';
 import UserDao, { IUserModel } from '../daos/UserDao';
 import { IUser } from '../models/IUser';
-import { UnableToSaveUserError } from '../utils/LibraryErrors';
+import { UnableToSaveUserError, InvalidUsernameOrPassword } from '../utils/LibraryErrors';
 
 
 export async function register(user: IUser): Promise<IUserModel> {
@@ -18,5 +18,28 @@ export async function register(user: IUser): Promise<IUserModel> {
     } catch (error: any) {
         throw new UnableToSaveUserError(error.message);
 
+    }
+}
+
+
+
+export async function login(credentials: { email: string, password: string }): Promise<IUserModel> {
+    const { email, password } = credentials;
+
+    try {
+        const user = await UserDao.findOne({ email });
+        if (!user) {
+            throw new InvalidUsernameOrPassword("Invalid username or password");
+        } else {
+            const validPassword: boolean = await bcrypt.compare(password, user.password);
+
+            if (validPassword) {
+                return user;
+            } else {
+                throw new InvalidUsernameOrPassword("Invalid username or password");
+            }
+        }
+    } catch (error: any) {
+        throw error;
     }
 }
