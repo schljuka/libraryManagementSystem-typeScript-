@@ -1,0 +1,31 @@
+{
+  "name": "library-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "prestart": "npm run build",
+    "start": "node ./dist/server.js",
+    "predev": "npm run build",
+    "dev": "concurrently \"tsc -w\" \"nodemon ./dist/server.js\""
+  },
+  "author": "Ljubomir",
+  "license": "ISC",
+  "dependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/cors": "^2.8.17",
+    "@types/node": "^20.12.7",
+    "bcrypt": "^5.1.1",
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "joi": "^17.13.0",
+    "mongoose": "^8.3.2",
+    "rimraf": "^5.0.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
