@@ -1,16 +1,17 @@
-import { LoginForm } from "../../features/authentication/components/LoginForm/LoginForm"
-import { User } from "../../models/User"
+import { RootState } from "@reduxjs/toolkit/query";
+import { useSelector } from "react-redux";
+import { LoginRegisterModal } from "../../features/authentication";
 
-interface HomePageProps {
-    displayLogin: boolean,
-    updateLoggedInUser(user: User): void
-}
 
-export default function HomePage(props: HomePageProps): JSX.Element {
+export default function HomePage(): JSX.Element {
+
+    const displayLogin = useSelector((state: RootState) => state.modal.displayLogin);
+
+
     return (
         <div className="page">
             Home page
-            {props.displayLogin ? <LoginForm updateLoggedInUser={props.updateLoggedInUser} /> : <></>}
+            {displayLogin ? <LoginRegisterModal /> : <></>}
         </div>
     )
 }
