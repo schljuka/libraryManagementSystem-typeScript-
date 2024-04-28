@@ -9,7 +9,13 @@ interface LoginFormProps {
     toggleRegister(): void;
 }
 
-export const LoginForm: React.FC = ({toggleRegister}) => {
+interface RegisterFormProps {
+    toggleLogin(): void;
+}
+
+
+export const LoginForm: React.FC<LoginFormProps> = ({ toggleRegister }) => {
+
 
     const emailRef = useRef<HTMLInputElement>(null);
     const passwordRef = useRef<HTMLInputElement>(null);

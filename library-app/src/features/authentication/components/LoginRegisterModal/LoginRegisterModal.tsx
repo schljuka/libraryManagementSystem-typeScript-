@@ -6,6 +6,7 @@ import { AppDispatch } from "../../../../redux/ReduxStore";
 import { setDisplayLogin } from "../../../../redux/slices/ModalSlice";
 import { LoginForm } from "../LoginForm/LoginForm";
 import './LoginRegisterModal.css';
+import { RegisterForm } from "../RegisterForm/RegisterForm";
 
 export const LoginRegisterModal: React.FC = () => {
 
@@ -36,7 +37,7 @@ export const LoginRegisterModal: React.FC = () => {
 
     return (
         <Modal
-            content={login ? <LoginForm toggleRegister={toggleLogin}/> : <></>}
+            content={login ? <LoginForm toggleRegister={toggleLogin} /> : <RegisterForm toggleLogin={toggleLogin} />}
             toggleModal={closeModal}
         />
     )
