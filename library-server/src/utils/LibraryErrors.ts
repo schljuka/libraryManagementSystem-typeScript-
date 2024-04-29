@@ -9,3 +9,10 @@ export class InvalidUsernameOrPassword extends Error {
         super(message);
     }
 }
+
+
+export class UserDoesNotExistError extends Error {
+    constructor(message: string) {
+        super(message);
+    }
+}
