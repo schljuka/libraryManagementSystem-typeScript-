@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import HomePage from "./pages/HomePage/HomePage";
 import { AppDispatch, RootState } from "./redux/ReduxStore";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import LayoutPage from "./pages/HomePage/LayoutPage/LayoutPage";
+import LayoutPage from './pages/LayoutPage/LayoutPage';
+
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import { fetchUser } from "./redux/slices/AuthenticationSlice";
-import ProfilePage from "./pages/HomePage/ProfilePage/ProfilePage";
 
 
 function App() {

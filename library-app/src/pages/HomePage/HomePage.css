@@ -1,0 +1,28 @@
+.home-page-container {
+  width: 75%;
+  height: 100%;
+  padding: 16px;
+  display: flex;
+  justify-contetn: space-between;
+  align-items: flex-start;
+  background-color: var(--background-primary);
+  box-shadow: var(--box-shadow);
+}
+
+.home-page-left {
+  width: 75%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-contetn: flex-start;
+  align-items: start;
+}
+
+.home-page-left {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-contetn: flex-start;
+  align-items: flex-start;
+}

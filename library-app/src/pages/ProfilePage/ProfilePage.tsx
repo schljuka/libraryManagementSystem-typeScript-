@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
 import './ProfilePage.css';
-import { AppDispatch, RootState } from "../../../redux/ReduxStore";
-import { fetchUser } from "../../../redux/slices/AuthenticationSlice";
-import { UpdateUserForm } from "../../../features/profile";
+import { AppDispatch, RootState } from "../../redux/ReduxStore";
+import { fetchUser } from "../../redux/slices/AuthenticationSlice";
+
 
 export default function ProfilePage() {
     const loggedInUser = useSelector((state: RootState) => state.authentication.loggedInUser);
