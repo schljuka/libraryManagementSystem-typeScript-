@@ -12,7 +12,7 @@ export const BookOfTheWeek: React.FC = () => {
                 book={
                     {
                         _id: "1234",
-                        barcoode: "1234",
+                        barcode: "1234",
                         cover: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1490528560i/4671.jpg",
                         title: "Java : test test",
                         authors: ["Mark Reed"],

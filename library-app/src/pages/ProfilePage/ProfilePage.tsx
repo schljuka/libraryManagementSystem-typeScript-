@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
-import './ProfilePage.css';
 import { AppDispatch, RootState } from "../../redux/ReduxStore";
 import { fetchUser } from "../../redux/slices/AuthenticationSlice";
+import './ProfilePage.css';
+import { UpdateUserForm } from "../../features/profile";
 
 
 export default function ProfilePage() {

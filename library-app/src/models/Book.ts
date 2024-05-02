@@ -1,6 +1,6 @@
 export type Book = {
     _id: string;
-    barcoode: string;
+    barcode: string;
     cover: string;
     title: string;
     authors: string[];
