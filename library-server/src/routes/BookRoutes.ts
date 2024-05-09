@@ -9,5 +9,6 @@ router.get("/", BookController.getAllBooks);
 router.post("/", ValidateSchema(Schemas.book.create, 'body'), BookController.createBook);
 router.put("/", ValidateSchema(Schemas.book.update, 'body'), BookController.updateBook);
 router.delete("/:barcode", ValidateSchema(Schemas.book.delete, 'params'), BookController.deleteBook);
+router.get("/query", BookController.searchForBooksByQuery);
 
 export = router;
