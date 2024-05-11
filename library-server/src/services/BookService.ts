@@ -9,6 +9,17 @@ export async function findAllBooks(): Promise<IBookModel[]> {
 }
 
 
+export async function findBookById(id: string): Promise<IBookModel> {
+    try {
+        const book = await BookDao.findById(id);
+        if (book) return book;
+
+        throw new BookDoesNotExistError("The specified book does not exist");
+    } catch (error: any) {
+        throw error;
+    }
+}
+
 export async function modifyBook(book: IBookModel): Promise<IBookModel> {
     try {
         let id = await BookDao.findOneAndUpdate({ barcode: book.barcode }, book, { new: true });

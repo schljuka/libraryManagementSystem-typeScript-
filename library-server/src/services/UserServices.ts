@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
 import { config } from '../config';
 import UserDao, { IUserModel } from '../daos/UserDao';
-import { IUser } from '../models/IUser';
+import { IUser } from '../models/User';
 import { UnableToSaveUserError, InvalidUsernameOrPassword, UserDoesNotExistError } from '../utils/LibraryErrors';
 
 

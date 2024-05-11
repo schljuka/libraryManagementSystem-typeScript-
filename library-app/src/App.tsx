@@ -8,6 +8,7 @@ import LayoutPage from './pages/LayoutPage/LayoutPage';
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import { fetchUser } from "./redux/slices/AuthenticationSlice";
 import CatalogPage from "./pages/CatalogPage/CatalogPage";
+import ResourcePage from "./pages/ResourcePage/ResourcePage";
 
 
 function App() {
@@ -30,8 +31,8 @@ function App() {
       <Routes>
         <Route path="/" element={<LayoutPage />}>
           <Route path="" element={<HomePage />} />
-          <Route path="/catalog" element={<CatalogPage/>} />
-          <Route path="/resource/:barcode" element={<>Resource</>} />
+          <Route path="/catalog" element={<CatalogPage />} />
+          <Route path="/resource/:barcode" element={<ResourcePage />} />
           <Route path="/profile/:userId" element={<ProfilePage />} />
         </Route>
 

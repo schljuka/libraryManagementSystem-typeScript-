@@ -1,11 +1,13 @@
 import Joi, { ObjectSchema } from 'joi';
 
 import { NextFunction, Response, Request } from 'express';
-import { IUser } from '../models/IUser';
+import { IUser } from '../models/User';
 import { IUserModel } from '../daos/UserDao';
 import { IBook } from '../models/Book';
 import { IBookModel } from '../daos/BookDao';
 import { ILibraryCard } from '../models/LibraryCard';
+import { ILoanRecord } from '../models/LoanRecors';
+import { ILoanRecordModel } from '../daos/LoanRecordDao';
 
 export function ValidateSchema(schema: ObjectSchema, property: string) {
     return async (req: Request, res: Response, next: NextFunction) => {
@@ -88,6 +90,33 @@ export const Schemas = {
         }),
         get: Joi.object<{ cardId: string }>({
             cardId: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required()
+        })
+    },
+    loan: {
+        create: Joi.object<ILoanRecord>({
+            status: Joi.string().valid('AVAILABLE', 'LOANED').required(),
+            loanedDate: Joi.date().required(),
+            dueDate: Joi.date().required(),
+            returnedDate: Joi.date(),
+            patron: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+            employeeOut: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+            employeeIn: Joi.string().regex(/^[0-9a-fA-F]{24}$/),
+            item: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required()
+        }),
+        update: Joi.object<ILoanRecordModel>({
+            _id: Joi.string().regex(/^[0-9a-fA-F]{24}$/),
+            status: Joi.string().valid('AVAILABLE', 'LOANED').required(),
+            loanedDate: Joi.date().required(),
+            dueDate: Joi.date().required(),
+            returnedDate: Joi.date(),
+            patron: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+            employeeOut: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required(),
+            employeeIn: Joi.string().regex(/^[0-9a-fA-F]{24}$/),
+            item: Joi.string().regex(/^[0-9a-fA-F]{24}$/).required()
+        }),
+        query: Joi.object<{ property: string, value: string | Date }>({
+            property: Joi.string().valid('_id', 'status', 'loanedDate', 'dueDate', 'returnedDate', 'patron', 'employeeOut', 'employeeIn', 'item').required(),
+            value: Joi.alternatives().try(Joi.string(), Joi.date()).required()
         })
     }
 }

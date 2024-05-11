@@ -30,3 +30,10 @@ export class LibraryCardDoesNotExistError extends Error {
     }
 }
 
+export class LoanRecordDoesNotExistError extends Error {
+    constructor(message: string) {
+        super(message);
+    }
+}
+
+

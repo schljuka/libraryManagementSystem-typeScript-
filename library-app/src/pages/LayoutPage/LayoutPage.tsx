@@ -6,6 +6,7 @@ import './LayoutPage.css';
 import { Footer, Navbar } from "../../features/navigation";
 import { LibraryCardModal, LoginRegisterModal } from "../../features/authentication";
 import { RootState } from "../../redux/ReduxStore";
+import { LoanBookModal } from "../../features/book";
 
 
 
@@ -23,6 +24,7 @@ export default function LayoutPage() {
         <div className="layout-page">
             {state.displayLogin && <LoginRegisterModal />}
             {state.displayLibraryCard && <LibraryCardModal />}
+            {state.displayLoan && <LoanBookModal />}
             <Navbar />
             <Outlet />
             <Footer />
